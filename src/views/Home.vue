@@ -4,7 +4,7 @@
     <div class="row mt-5" v-if="arrDeath.length > 0">
         <div class="col">
         <h2>Deaths in U.S.</h2>
-        <line-chart :chartData="arrDeath" :options="chartOptions" label="Deaths" ></line-chart>
+        <line-chart :chartData="arrDeath" :options="chartOptions" label="Deaths" color="#f87979" ></line-chart>
         </div>
     </div>
   </div>

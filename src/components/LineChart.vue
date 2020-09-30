@@ -14,6 +14,9 @@ export default {
     options: {
       type: Object,
       default: null
+    },
+    color: {
+      type: String
     }
   },
   mounted () {
@@ -26,7 +29,8 @@ export default {
       datasets: [
           {
             label: this.label,
-            data: totals
+            data: totals,
+            backgroundColor: this.color
           }
         ]
       },
