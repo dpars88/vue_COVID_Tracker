@@ -1,20 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <Main msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+    <div class="row mt-5" v-if="arrDeath.length > 0">
+        <div class="col">
+        <h2>Deaths in U.S.</h2>
+        <line-chart :chartData="arrDeath" :options="chartOptions" label="Deaths" ></line-chart>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import Main from '../components/Main.vue';
 import moment from 'moment';
+import LineChart from '../components/LineChart.vue';
 
 export default {
   name: 'Home',
   components: {
-    Main
+    LineChart
   },
+
   data() {
     return {
       arrDeath: [],
@@ -22,7 +28,11 @@ export default {
       arrTotalTestResults: [],
       arrPositive: [],
       arrNegative: [],
-      arrRecovered: []
+      arrRecovered: [],
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
     }
   },
   async created() {
@@ -50,7 +60,7 @@ export default {
 
     });
 
-    //console.log(this.arrDeath);
+    // console.log(this.arrDeath);
   }
 }
 </script>
