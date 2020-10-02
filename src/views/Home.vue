@@ -7,6 +7,12 @@
         <line-chart :chartData="arrDeath" :options="chartOptions" label="Deaths" color="#f87979" ></line-chart>
         </div>
     </div>
+    <div class="row mt-5" v-if="arrTesting.length > 0">
+        <div class="col">
+        <h2>Testing With Positive and Negative Results</h2>
+        <testing-line-chart :chartData="arrTesting" :options="chartOptions" :label="arrLabels" color="#f99979" ></testing-line-chart>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -14,13 +20,14 @@
 import axios from 'axios';
 import moment from 'moment';
 import LineChart from '../components/LineChart.vue';
+import TestingLineChart from '../components/TestingLineChart.vue'
 
 export default {
   name: 'Home',
   components: {
-    LineChart
+    LineChart,
+    TestingLineChart
   },
-
   data() {
     return {
       arrDeath: [],
@@ -32,7 +39,10 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false
-      }
+      },
+      loaded: true,
+      arrTesting: [],
+      arrLabels: []
     }
   },
   async created() {
@@ -60,7 +70,19 @@ export default {
 
     });
 
+    this.arrTesting.push(this.arrTotalTestResults);
+    this.arrTesting.push(this.arrPositive);
+    this.arrTesting.push(this.arrNegative);
+    this.arrTesting.push(this.arrRecovered);
+    this.arrLabels = ['Total Testing', 'Total Positive', 'Total Negative', 'Total Recovered']
     // console.log(this.arrDeath);
+  },
+  methods: {
+    loading: function () {
+      if (this.loaded) {
+        return true;
+      }
+    }
   }
 }
 </script>
