@@ -1,5 +1,11 @@
 # vue_covid_tracker
 
+## About
+
+This project was built using Vue.js, Vue CLI, and Chart.js. Data used is being retrieved from https://covidtracking.com/.
+
+Stay safe. Wear a mask. Help stop the spread of the virus.
+
 ## Project setup
 ```
 npm install
