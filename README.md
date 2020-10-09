@@ -1,4 +1,6 @@
-# vue_covid_tracker
+# Vue COVID Tracker
+
+![Image of Tracker](./images/Vue_COVID_Tracker.png)
 
 ## About
 
