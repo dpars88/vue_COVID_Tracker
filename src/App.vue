@@ -19,6 +19,7 @@
 
 #nav {
   padding: 30px;
+  font-size: 30px;
 }
 
 #nav a {
